@@ -309,10 +309,10 @@ const setSliderMax = () => {
   seekSlider.max = Math.floor(audio.duration);
 };
 
-const displayBufferedAmount = () => {
-  const bufferedAmount = Math.floor(audio.buffered.end(audio.buffered.length - 1));
-  audioPlayerContainer.style.setProperty('--buffered-width', `${bufferedAmount / seekSlider.max * 100}%`);
-};
+// const displayBufferedAmount = () => {
+//   const bufferedAmount = Math.floor(audio.buffered.end(audio.buffered.length - 1));
+//   audioPlayerContainer.style.setProperty('--buffered-width', `${bufferedAmount / seekSlider.max * 100}%`);
+// };
 
 const whilePlaying = () => {
   seekSlider.value = Math.floor(audio.currentTime);
@@ -324,16 +324,16 @@ const whilePlaying = () => {
 if (audio.readyState > 0) {
   displayDuration();
   setSliderMax();
-  displayBufferedAmount();
+  // displayBufferedAmount();
 } else {
   audio.addEventListener('loadedmetadata', () => {
     displayDuration();
     setSliderMax();
-    displayBufferedAmount();
+    // displayBufferedAmount();
   });
 }
 
-audio.addEventListener('progress', displayBufferedAmount);
+// audio.addEventListener('progress', displayBufferedAmount);
 
 seekSlider.addEventListener('input', () => {
   currentTimeContainer.textContent = calculateTime(seekSlider.value);
